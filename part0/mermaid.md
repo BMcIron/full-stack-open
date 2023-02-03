@@ -1,12 +1,12 @@
 ```mermaid
 sequenceDiagram
-    participant dotcom
-    participant iframe
-    participant viewscreen
-    dotcom->>iframe: loads html w/ iframe url
-    iframe->>viewscreen: request template
-    viewscreen->>iframe: html & javascript
-    iframe->>dotcom: iframe ready
-    dotcom->>iframe: set mermaid data on iframe
-    iframe->>iframe: render mermaid
+    participant browser
+    participant server
+    
+    browser->>server: POST https://fullstack-exampleapp.herokuapp.com/new_note
+    server->>browser: URL redirect HTTPS status code 302
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    
+    Note right of browser: The browser starts executing the JavaScript code that fetches the JSON from the server
+
 ```
